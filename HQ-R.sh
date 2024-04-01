@@ -16,7 +16,7 @@ sed -i 's/CONFIG_IPV6=no/CONFIG_IPV6=yes/g' /etc/net/ifaces/default/options
 mkdir /etc/net/ifaces/ens19
 mkdir /etc/net/ifaces/ens20
  
-cp /etc/net/ifaces/enp18/options /etc/net/ifaces/ens19/options
+cp /etc/net/ifaces/ens18/options /etc/net/ifaces/ens19/options
 cp /etc/net/ifaces/ens18/options /etc/net/ifaces/ens20/options
  
 echo 11.11.11.11/24 > /etc/net/ifaces/ens18/ipv4address
