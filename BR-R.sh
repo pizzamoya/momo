@@ -98,18 +98,6 @@ passwd branch-admin
 useradd network-admin -m -c "Network admin" -U
 passwd network-admin
 
-cat <<EOF > backup-script.sh
-#!/bin/bash
- 
-echo "Start backup!"
- 
-backup_dir="/etc"
-dest_dir="/opt/backup"
- 
-mkdir -p $dest_dir
-tar -czf $dest_dir/$(hostname -s)-$(date +"%d.%m.%y").tgz $backup_dir
- 
-echo "Done"
-EOF
-chmod +x backup-script.sh
-sh /root/backup-script.sh
+chmox +x /root/momo/backup.sh
+sh /root/momo/backup.sh
+ls /opt/
