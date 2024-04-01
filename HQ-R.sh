@@ -204,9 +204,9 @@ tar -czf $dest_dir/$(hostname -s)-$(date +"%d.%m.%y").tgz $backup_dir
  
 echo "Done"
 EOF
-chmox +x backup-script.sh
+chmod +x backup-script.sh
 sh /root/backup-script.sh
  
-firewall-cmd --permanent --zone=public --add-forward-port=port=22:proto=tcp:to-port=2222:toaddr=192.168.100.5
-firewall-cmd --permanent --zone=public --add-forward-port=port=22:proto=tcp:to-port=2222:toaddr=2000:100::2
+firewall-cmd --permanent --zone=public --add-forward-port=port=22:proto=tcp:toport=2222:toaddr=192.168.100.5
+firewall-cmd --permanent --zone=public --add-forward-port=port=22:proto=tcp:toport=2222:toaddr=2000:100::2
 firewall-cmd --reload
