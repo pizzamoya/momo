@@ -98,7 +98,7 @@ echo "nameserver 77.88.8.8" >> /etc/resolv.conf
 apt-get update && apt-get install -y dhcp-server
  
 sed -i 's/DHCPDARGS=/DHCPDARGS=ens19/g' /etc/sysconfig/dhcpd
-sed -i 's/DHCPDARGS=/DHCPDARGS=ens19/g' /etc/sysconfig/dhcpd
+sed -i 's/DHCPDARGS=/DHCPDARGS=ens19/g' /etc/sysconfig/dhcpd6
  
 cp /etc/dhcp/dhcpd.conf.example /etc/dhcp/dhcpd.conf
  
@@ -119,6 +119,7 @@ subnet 192.168.100.0 netmask 255.255.255.192 {
 # hardware ethernet "mac-address hq-srv";
 #  fixed-address 192.168.100.1;
 #}
+EOF
 systemctl enable --now dhcpd
  
 cp /etc/dhcp/dhcpd6.conf.sample /etc/dhcp/dhcpd6.conf
