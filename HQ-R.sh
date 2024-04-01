@@ -131,14 +131,14 @@ preferred-lifetime 604000;
 option dhcp-renewal-time 36000;
 option dhcp-rebinding-time 72000;
  
-allow leasequery
+allow leasequery;
  
 option dhcp6.preference 255;
  
 option dhcp6.info-refresh-time 21600;
  
 subnet6 2000:100::/122 {
-	range 2000:100::2 2000:100::3f;
+	range6 2000:100::2 2000:100::3f;
 }
  
 #host hq-srv {
