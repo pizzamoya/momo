@@ -36,4 +36,4 @@ echo "nameserver 77.88.8.8" >> /etc/resolv.conf
 apt-get update
 
 useradd admin -m -c "Admin" -U
-passwd admin
+echo -e "P@ssw0rd\nP@ssw0rd" | passwd admin
