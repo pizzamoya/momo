@@ -36,10 +36,12 @@ systemctl restart network
 resolvconf -u
 echo "nameserver 77.88.8.8" >> /etc/resolv.conf
 apt-get update && apt-get install -y firewalld
+apt-get update && apt-get install -y frr
+apt-get update && apt-get install -y dhcp-server
+
 systemctl enable --now firewalld
 firewall-cmd --permanent --zone=public --add-interface=ens18
 firewall-cmd --permanent --zone=trusted --add-interface=ens19
-firewall-cmd --permanent --zone=trusted --add-interface=tun1
 firewall-cmd --permanent --zone=public --add-masquerade
 firewall-cmd --reload
 systemctl restart firewalld
@@ -59,11 +61,13 @@ echo 2001:100::1/64 > /etc/net/ifaces/tun1/ipv6address
  
 systemctl restart network
 modprobe gre
- 
+
+firewall-cmd --permanent --zone=trusted --add-interface=tun1
+firewall-cmd --reload
+systemctl restart firewalld
+
 resolvconf -u
 echo "nameserver 77.88.8.8" >> /etc/resolv.conf
- 
-apt-get update && apt-get install -y frr
  
 sed -i 's/ospfd=no/ospfd=yes/g' /etc/frr/daemons
 sed -i 's/ospf6d=no/ospf6d=yes/g' /etc/frr/daemons
@@ -95,9 +99,7 @@ systemctl restart frr
  
 resolvconf -u
 echo "nameserver 77.88.8.8" >> /etc/resolv.conf
- 
-apt-get update && apt-get install -y dhcp-server
- 
+
 sed -i 's/DHCPDARGS=/DHCPDARGS=ens19/g' /etc/sysconfig/dhcpd
 sed -i 's/DHCPDARGS=/DHCPDARGS=ens19/g' /etc/sysconfig/dhcpd6
  
