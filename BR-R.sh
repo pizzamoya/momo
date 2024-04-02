@@ -107,6 +107,6 @@ passwd branch-admin
 useradd network-admin -m -c "Network admin" -U
 passwd network-admin
 
-chmox +x /root/momo/backup.sh
+chmod +x /root/momo/backup.sh
 sh /root/momo/backup.sh
 ls /opt/
