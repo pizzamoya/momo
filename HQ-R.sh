@@ -185,10 +185,11 @@ systemctl restart dhcpd6
 systemctl enable --now radvd
  
 useradd admin -m -c "Admin" -U
-passwd admin
+echo -e "P@ssw0rd\nP@ssw0rd" | passwd admin
+
  
 useradd network-admin -m -c "Network admin" -U
-passwd network-admin
+echo -e "P@ssw0rd\nP@ssw0rd" | passwd network-admin
  
 apt-get install -y iperf3
 systemctl enable --now iperf3
