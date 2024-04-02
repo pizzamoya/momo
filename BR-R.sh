@@ -103,9 +103,11 @@ echo "nameserver 77.88.8.8" >> /etc/resolv.conf
  
 useradd branch-admin -m -c "Branch admin" -U
 passwd branch-admin
+echo -e "P@ssw0rd\nP@ssw0rd" | passwd branch-admin
 
 useradd network-admin -m -c "Network admin" -U
 passwd network-admin
+echo -e "P@ssw0rd\nP@ssw0rd" | passwd network-admin
 
 chmod +x /root/momo/backup.sh
 sh /root/momo/backup.sh
