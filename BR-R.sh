@@ -33,6 +33,7 @@ systemctl restart network
 resolvconf -u
 echo "nameserver 77.88.8.8" >> /etc/resolv.conf
 apt-get update && apt-get install -y firewalld
+apt-get update && apt-get install -y frr
 systemctl enable --now firewalld
 firewall-cmd --permanent --zone=public --add-interface=ens18
 firewall-cmd --permanent --zone=trusted --add-interface=ens19
@@ -55,11 +56,10 @@ echo 2001:100::2/64 > /etc/net/ifaces/tun1/ipv6address
  
 systemctl restart network
 modprobe gre
- 
+
 resolvconf -u
 echo "nameserver 77.88.8.8" >> /etc/resolv.conf
- 
-apt-get update && apt-get install -y frr
+
  
 sed -i 's/ospfd=no/ospfd=yes/g' /etc/frr/daemons
 sed -i 's/ospf6d=no/ospf6d=yes/g' /etc/frr/daemons
@@ -88,7 +88,10 @@ exit
 !
 EOF
 systemctl restart frr
- 
+
+firewall-cmd --permanent --zone=public --add-interface=tun1
+firewall-cmd --reload
+
 resolvconf -u
 echo "nameserver 77.88.8.8" >> /etc/resolv.conf
  
