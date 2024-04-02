@@ -39,6 +39,7 @@ apt-get update && apt-get install -y firewalld
 systemctl enable --now firewalld
 firewall-cmd --permanent --zone=public --add-interface=ens18
 firewall-cmd --permanent --zone=trusted --add-interface=ens19
+firewall-cmd --permanent --zone=trusted --add-interface=tun1
 firewall-cmd --permanent --zone=public --add-masquerade
 firewall-cmd --reload
 systemctl restart firewalld
