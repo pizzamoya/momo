@@ -34,10 +34,10 @@ resolvconf -u
 echo "nameserver 77.88.8.8" >> /etc/resolv.conf
 apt-get update && apt-get install -y firewalld
 apt-get update && apt-get install -y frr
+
 systemctl enable --now firewalld
 firewall-cmd --permanent --zone=public --add-interface=ens18
 firewall-cmd --permanent --zone=trusted --add-interface=ens19
-firewall-cmd --permanent --zone=trusted --add-interface=tun1
 firewall-cmd --permanent --zone=public --add-masquerade
 firewall-cmd --reload
 systemctl restart firewalld
@@ -57,6 +57,11 @@ echo 2001:100::2/64 > /etc/net/ifaces/tun1/ipv6address
  
 systemctl restart network
 modprobe gre
+
+firewall-cmd --permanent --zone=trusted --add-interface=tun1
+firewall-cmd --reload
+systemctl restart firewalld
+
 
 resolvconf -u
 echo "nameserver 77.88.8.8" >> /etc/resolv.conf
