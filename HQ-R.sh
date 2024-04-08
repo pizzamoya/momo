@@ -178,7 +178,7 @@ interface ens19
 		AdvAutonomous on;
 		AdvRouterAddr on;
 	};
-];
+};
 EOF
  
 systemctl restart dhcpd6
