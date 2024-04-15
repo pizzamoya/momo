@@ -196,10 +196,9 @@ systemctl enable --now iperf3
  
 iperf3 -c 11.11.11.1 --get-server-output > /root/iperf3_logfile.txt
  
-chmox +x /root/momo/backup.sh
+chmod +x /root/momo/backup.sh
 sh /root/momo/backup.sh
-ls /opt/
  
-firewall-cmd --permanent --zone=public --add-forward-port=port=22:proto=tcp:toport=2222:toaddr=192.168.100.5
-firewall-cmd --permanent --zone=public --add-forward-port=port=22:proto=tcp:toport=2222:toaddr=2000:100::2
-firewall-cmd --reload
+#firewall-cmd --permanent --zone=public --add-forward-port=port=22:proto=tcp:toport=2222:toaddr=192.168.100.5
+#firewall-cmd --permanent --zone=public --add-forward-port=port=22:proto=tcp:toport=2222:toaddr=2000:100::2
+#firewall-cmd --reload
