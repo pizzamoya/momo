@@ -109,3 +109,15 @@ echo -e "P@ssw0rd\nP@ssw0rd" | passwd network-admin
 
 chmod +x /root/momo/backup.sh
 sh /root/momo/backup.sh
+
+timedatectl set-timezone Europe/Moscow
+apt-get install -y chrony
+cat <<EOF > /etc/chrony.conf
+# Use public servers from the pool.ntp.org project.
+# Please consider joining the pool (https://www.pool.ntp.org/join.html).
+# pool pool.ntp.org iburst
+
+server 192.168.100.62 iburst prefer
+server 2000:100::3f iburst
+
+systemctl enable --now chronyd
