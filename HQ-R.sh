@@ -202,3 +202,34 @@ sh /root/momo/backup.sh
 #firewall-cmd --permanent --zone=public --add-forward-port=port=22:proto=tcp:toport=2222:toaddr=192.168.100.5
 #firewall-cmd --permanent --zone=public --add-forward-port=port=22:proto=tcp:toport=2222:toaddr=2000:100::2
 #firewall-cmd --reload
+
+timedatectl set-timezone Europe/Moscow
+apt-get update && apt-get install -y chrony
+
+cat <<EOF > /etc/chrony.conf
+# Use public servers from the pool.ntp.org project.
+# Please consider joining the pool (https://www.pool.ntp.org/join.html).
+# pool pool.ntp.org iburst
+
+server 127.0.0.1 iburst prefer
+hwtimestamp *
+local stratum 5
+allow 0/0
+allow ::/0
+
+#allow 11.11.11.0/24
+#allow 22.22.22.0/24
+#allow 33.33.33.0/24
+#allow 44.44.44.0/24
+#allow 192.168.100.0/26
+#allow 192.168.200.0/28
+#allow 172.16.100.0/24
+#allow 2001:11::/64
+#allow 2001:22::/64
+#allow 2001:33::/64
+#allow 2001:44::/64
+#allow 2000:100::/122
+#allow 2000:200::/124
+#allow 2001:100::/64
+
+systemctl enable --now chronyd
