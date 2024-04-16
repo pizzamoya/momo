@@ -231,5 +231,5 @@ allow ::/0
 #allow 2000:100::/122
 #allow 2000:200::/124
 #allow 2001:100::/64
-
+EOF
 systemctl enable --now chronyd
