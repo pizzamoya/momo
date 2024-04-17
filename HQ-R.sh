@@ -147,7 +147,7 @@ subnet6 2000:100::/122 {
 #host hq-srv {
 #	host-identifier option
 #		dhcp6.client-id <DUID>;
-#	fixed-address 2000:100::1;
+#	fixed-address6 2000:100::1;
 #	fixed-prefix6 2000:100::/122;
 #}
 EOF
