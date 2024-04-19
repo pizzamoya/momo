@@ -23,7 +23,7 @@ echo 11.11.11.11/24 > /etc/net/ifaces/ens18/ipv4address
 echo 192.168.100.62/26 > /etc/net/ifaces/ens19/ipv4address
 echo 44.44.44.44/24 > /etc/net/ifaces/ens20/ipv4address
 echo 2001:11::11/64 > /etc/net/ifaces/ens18/ipv6address
-echo 2000:100::3f/122 > /etc/net/ifaces/ens19/ipv6address
+echo 2000:100::3f/124 > /etc/net/ifaces/ens19/ipv6address
 echo 2001:44::44/64 > /etc/net/ifaces/ens20/ipv6address
 echo default via 11.11.11.1 > /etc/net/ifaces/ens18/ipv4route
 echo default via 2001:11::1 > /etc/net/ifaces/ens18/ipv6route  
